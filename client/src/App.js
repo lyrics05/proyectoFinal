@@ -23,7 +23,7 @@ import axios from "axios";
 import AdminReviews from "./Components/Admin/AdminReviews";
 
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
- axios.defaults.baseURL = "http://localhost:4000"; // Usar backend local
+ axios.defaults.baseURL = "https://proyectofinal-0ykh.onrender.com"; // Usar backend local
 
 //axios.defaults.baseURL = "http://localhost:3001/"; // Cuando vayan a probar en Local comentan la linea de arriba y descomentan esta
 

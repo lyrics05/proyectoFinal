@@ -40,7 +40,7 @@ export function getCars() {
   return function (dispatch) {
     dispatch({ type: LOADING_ACTION });
     axios
-      .get(`http://localhost:4000/cars`)
+      .get(`/cars`)
       .then((response) => response.data)
       .then((response) => {
         dispatch({ type: GET_CARS, payload: response });
@@ -55,7 +55,7 @@ export function getCarsDetail(carId) {
   return async function (dispatch) {
     dispatch({ type: LOADING_ACTION });
     try {
-      var json = await axios.get("http://localhost:4000/cars/" + carId);
+      var json = await axios.get("/cars/" + carId);
       return dispatch({
         type: GET_CARS_DETAIL,
         payload: json.data,
@@ -69,7 +69,7 @@ export function getCarsDetail(carId) {
 export function postCar(userId, body) {
   return async function (dispatch) {
     try {
-      var car = await axios.post(`http://localhost:4000/cars/${userId}`, body);
+      var car = await axios.post(`/cars/${userId}`, body);
       return dispatch({
         type: POST_CAR,
         payload: car.data,
@@ -113,7 +113,7 @@ export function getCarByName(model) {
   return async function (dispatch) {
     dispatch({ type: LOADING_ACTION });
     await axios
-      .get(`http://localhost:4000/cars?model=${model}`)
+      .get(`/cars?model=${model}`)
       .then((response) =>
         dispatch({ type: GET_CAR_BY_NAME, payload: response.data })
       );
@@ -124,7 +124,7 @@ export function getCarByBrand(brand) {
   return async function (dispatch) {
     dispatch({ type: LOADING_ACTION });
     await axios
-      .get(`http://localhost:4000/cars?brand=${brand}`)
+      .get(`/cars?brand=${brand}`)
       .then((response) =>
         dispatch({ type: GET_CAR_BY_BRAND, payload: response.data })
       );
@@ -135,7 +135,7 @@ export function getCarByEmail(email) {
   return async function (dispatch) {
     dispatch({ type: LOADING_ACTION });
     await axios
-      .get(`http://localhost:4000/cars?email=${email}`)
+      .get(`/cars?email=${email}`)
       .then((response) =>
         dispatch({ type: GET_CAR_BY_EMAIL, payload: response.data })
       );
@@ -162,7 +162,7 @@ export function loadingAction(status) {
 export function deleteCar(carId, userId) {
   return async (dispatch) => {
     try {
-      await axios.delete(`http://localhost:4000/cars/${userId}/${carId}`);
+      await axios.delete(`/cars/${userId}/${carId}`);
       return dispatch({
         type: DELETE_CAR,
         payload: {
@@ -184,7 +184,7 @@ export function deleteCar(carId, userId) {
 export function deleteCarAdmin(carId) {
   return async (dispatch) => {
     try {
-      await axios.delete(`http://localhost:4000/admin/${carId}`);
+      await axios.delete(`/admin/${carId}`);
       return dispatch({
         type: DELETE_CAR_ADMIN,
         payload: carId
@@ -207,7 +207,7 @@ export function updateCar(carId, payload, userId) {
   //pasarle user id
   return async (dispatch) => {
     try {
-      await axios.put(`http://localhost:4000/cars/${userId}/${carId}`, payload);
+      await axios.put(`/cars/${userId}/${carId}`, payload);
       return dispatch({ type: PUT_CAR });
     } catch (err) {
       dispatch({
@@ -223,7 +223,7 @@ export function updateCar(carId, payload, userId) {
 export function addFavorite(userId, carId) {
   return async function (dispatch) {
     try {
-      await axios.post(`http://localhost:4000/favorites/${userId}/${carId}`, { userId, carId }); // Se corrige el segundo argumento
+      await axios.post(`/favorites/${userId}/${carId}`, { userId, carId }); // Se corrige el segundo argumento
       dispatch({
         type: ADD_FAVORITE,
         payload: {
@@ -240,7 +240,7 @@ export function addFavorite(userId, carId) {
 export const getFavorites = (userId) => {
   return async function (dispatch) {
     try {
-      const allFavorites = await axios.get(`http://localhost:4000/favorites/${userId}`);
+      const allFavorites = await axios.get(`/favorites/${userId}`);
       dispatch({
         type: GET_CAR_FAVORITES,
         payload: allFavorites.data,
@@ -253,7 +253,7 @@ export const getFavorites = (userId) => {
 export const getpublications = (userId) => {
   return async function (dispatch) {
     try {
-      const allPublications = await axios.get(`http://localhost:4000/publications/${userId}`);
+      const allPublications = await axios.get(`/publications/${userId}`);
       dispatch({
         type: GET_CAR_PUBLICATIONS,
         payload: allPublications.data,
@@ -267,7 +267,7 @@ export const getpublications = (userId) => {
 export function removeFavorite(userId, carId) {
   return async function (dispatch) {
     try {
-      await axios.delete(`http://localhost:4000/favorites/${userId}/${carId}`, { userId, carId });
+      await axios.delete(`/favorites/${userId}/${carId}`, { userId, carId });
       dispatch({
         type: REMOVE_FAVORITE,
         payload: {
@@ -284,7 +284,7 @@ export function removeFavorite(userId, carId) {
 export const allUsers = () => {
   return async function (dispatch) {
     try {
-      const allUsers = await axios.get(`http://localhost:4000/user`);
+      const allUsers = await axios.get(`/user`);
       dispatch({
         type: ALL_USERS,
         payload: allUsers.data,
@@ -298,7 +298,7 @@ export const allUsers = () => {
 export const createUs = (payload) => {
   return async function (dispatch) {
     try {
-      const newUs = await axios.post(`http://localhost:4000/user`, payload);
+      const newUs = await axios.post(`/user`, payload);
       console.log("Server response:", newUs.data); // Agregar este mensaje de registro
       return dispatch({
         type: CREATE_USER,
@@ -312,7 +312,7 @@ export const createUs = (payload) => {
 
 export function getUsersDetails(email) {
   return async function (dispatch) {
-    let json = await axios.get(`http://localhost:4000/user?email=${email}`);
+    let json = await axios.get(`/user?email=${email}`);
     console.log("esto es json.data",json.data)
     return dispatch({
       type: GET_USER_PROFILE,
@@ -323,7 +323,7 @@ export function getUsersDetails(email) {
 
 export function UserDelete(userId) {
   return async function (dispatch) {
-    let json = await axios.delete(`http://localhost:4000/user/${userId}`);
+    let json = await axios.delete(`/user/${userId}`);
     return dispatch({
       type: USER_DELETE,
       payload: json.data,
@@ -334,7 +334,7 @@ export function UserDelete(userId) {
 export function addToPublications(userId, carId) {
   return async function (dispatch) {
     try {
-      await axios.post(`http://localhost:4000/publications/${userId}`, { carId });
+      await axios.post(`/${userId}`, { carId });
       dispatch({
         type: ADD_TO_PUBLICATIONS,
         payload: carId,
@@ -347,7 +347,7 @@ export function addToPublications(userId, carId) {
 
 export function DeleteAdminReview(reviewId) {
   return async function (dispatch) {
-    let json = await axios.delete(`http://localhost:4000/review/${reviewId}`);
+    let json = await axios.delete(`/review/${reviewId}`);
     return dispatch({
       type: DELETE_REVIEW,
       payload: json.data,
@@ -371,7 +371,7 @@ export function addToReviews(name, date, body, ratingNum) {
 export const addReview = (userId,payload) => {
   return async function () {
   
-      const allReviews = await axios.post(`http://localhost:4000/review/${userId}`,payload);
+      const allReviews = await axios.post(`/review/${userId}`,payload);
       return allReviews
    
 }
@@ -381,7 +381,7 @@ export const addReview = (userId,payload) => {
 export function getReviews() {
   return async function (dispatch) {
   try {
-    var json = await axios.get(`http://localhost:4000/review`);
+    var json = await axios.get(`/review`);
     return dispatch( {
       type: ADD_TO_REVIEWS,
         payload: json.data
@@ -407,7 +407,7 @@ export function getReviews() {
 export function updateReview(userId,payload) {
   return async function (dispatch) {
 
-       await axios.put(`http://localhost:4000/review/${userId}`,payload);
+       await axios.put(`/review/${userId}`,payload);
 
 }
 }
@@ -422,7 +422,7 @@ export function searchUserAdmin(payload){
 export function updateUser(userId,payload) {
   return async function () {
 
-       await axios.put(`http://localhost:4000/user/${userId}`,payload);
+       await axios.put(`/user/${userId}`,payload);
 
 }
 
@@ -438,7 +438,7 @@ export function searchReviewAdmin(payload){
 export function getUsersStatistcs(){
   return async function(dispatch) {
     try {
-      const response = (await axios.get("http://localhost:4000/statistics/users")).data
+      const response = (await axios.get("/statistics/users")).data
       return dispatch(
         {
           type: GET_USERS_STATISTICS,
@@ -454,7 +454,7 @@ export function getUsersStatistcs(){
 export function getCarsStatistics(){
   return async function(dispatch) {
     try {
-      const response = (await axios.get("http://localhost:4000/statistics/cars")).data
+      const response = (await axios.get("/statistics/cars")).data
       return dispatch(
         {
           type: GET_CARS_STATISTICS,
