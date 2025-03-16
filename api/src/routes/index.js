@@ -12,7 +12,9 @@ const statisticsRoutes = require('./statisticsRoutes')
 
 
 const router = Router();
-
+router.get('/', (req, res) => {
+    res.send('API funcionando correctamente');
+});
 router.use('/cars', carsRoutes);
 router.use('/brands', brandRoutes);
 router.use('/favorites', favoritesRoutes);
