@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 // Syncing all the models at once.
 conn.sync({ alter: true }).then(() => {
   server.listen(PORT, () => {
-    console.log(`escuchando en el puert ${PUERTO || process.env.PORT}`); // eslint-disable-line no-console
+    console.log(`escuchando en el puert ${PORT || process.env.PORT}`); // eslint-disable-line no-console
   });
 });
 
