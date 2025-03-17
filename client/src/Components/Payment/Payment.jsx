@@ -142,6 +142,23 @@ function onInputChange(e) { //cambio el estado segun el input
   return(
     <>
     <h2 className="mb-8 text-4x1 font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white mt-10">Checkout 🛒</h2>
+    <h6>Estas en modo de prueba.puedes utilizar estas credenciales</h6>
+    
+        <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>Nombre:</span> Cualquier Nombre
+      </p>
+      <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>Número de tarjeta:</span> 4242 4242 4242 4242
+      </p>
+      <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>Fecha:</span> 01/29
+      </p>
+      <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>CVV:</span> 123
+      </p>
+      <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>Código postal:</span> 01000
+      </p>
         
         <div >
           <form  className="max-w-[400px] mx-auto bg-[blue] rounded-lg p-8" onSubmit={handleSubmit}>
