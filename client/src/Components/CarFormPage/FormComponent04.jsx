@@ -18,6 +18,22 @@ export function FormComponent04 (props) {
         <>
         <ProgressBar04/>
         <h2 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl mt-10 lg:text-3xl dark:text-white">Upload your car photo 📸</h2>
+        <h6>Estas en modo de prueba.puedes utilizar estas credenciales</h6>
+        <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>Nombre:</span> Cualquier Nombre
+      </p>
+      <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>Número de tarjeta:</span> 4242 4242 4242 4242
+      </p>
+      <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>Fecha:</span> 01/29
+      </p>
+      <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>CVV:</span> 123
+      </p>
+      <p style={{ color: "#666", fontSize: "16px" }}>
+        <span style={{ fontWeight: "bold", color: "#000" }}>Código postal:</span> 01000
+      </p>
         
         {!errors.img ? (
           <div class="flex justify-center items-center flex gap-4">                 
